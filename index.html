@@ -11,54 +11,30 @@
     <div class="container">
         <header>
             <h1>Expense Tracker</h1>
-            <p>6:21 Saturday</p>
+            <p class="current-day"></p>
         </header>
         <section>
             <div class="content">
                 <div class="content-item">
                     <h2>Income</h2>
-                    <p>0</p>
+                    <p class="income">0</p>
                 </div>
                 <div class="content-item">
                     <h2>Expenses</h2>
-                    <p>0</p>
+                    <p class="expense">0</p>
                 </div>
                 <div class="content-item">
                     <h2>Balance</h2>
-                    <p>0</p>
+                    <p class="balance">0</p>
+                </div>
+            </div>
+            <div class="main-chart">
+                <h2>Chart</h2>
+                <div class="chart">
+                    <canvas id="myChart" width="400" height="400" ></canvas>
                 </div>
             </div>
             <ul class="nav-list">
-                <li class="nav-items">
-                    <div class="head">
-                        <h4>May 16, Saturday</h4>
-                        <p>Expenses: <span>662</span></p>
-                    </div>
-                    <div class="history">
-                        <div class="history-content">
-                            <p>-622</p>
-                            <h3>Lorem</h3>
-                        </div>
-                        <div class="delete">
-                            <i class="fas fa-trash-alt"></i>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-items">
-                    <div class="head">
-                        <h4>May 16, Saturday</h4>
-                        <p>Expenses: <span>662</span></p>
-                    </div>
-                    <div class="history">
-                        <div class="history-content">
-                            <p>-622</p>
-                            <h3>Lorem</h3>
-                        </div>
-                        <div class="delete">
-                            <i class="fas fa-trash-alt"></i>
-                        </div>
-                    </div>
-                </li>
             </ul>
             <div class="add-expenses">
                 <button class="touch">+</button>
@@ -69,29 +45,30 @@
                 </div>
                 <form>
                     <div class="input-type">
-                        <select name="" id="">
-                            <option value="Expenses">Expenses</option>
+                        <select name="" id="select">
                             <option value="Income">Income</option>
+                            <option value="Expenses">Expenses</option>
                         </select>
                    </div>
                    <div class="input-content">
                        <div class="description">
                            <label>📝</label>
-                           <input type="text" placeholder="Memo">
+                           <input class="text" type="text" placeholder="Memo">
                        </div>
                        <div class="Amount">
                            <label>₹</label>
-                           <input type="number" placeholder="Amount">
+                           <input class="number" type="number" placeholder="Amount">
                        </div>
                    </div>
                    <div class="submit">
-                       <input type="submit" value="ADD">
+                       <input class="submit" type="submit" value="ADD">
                    </div>
                 </form>
 
             </div>
         </section>
     </div>
+     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
