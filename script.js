@@ -9,7 +9,8 @@ window.onload = function(){
     let income = document.querySelector(".income");
     let balance = document.querySelector(".balance");
     let expense = document.querySelector(".expense");
-    let list = [0,0];
+    let mainChart = document.querySelector(".main-chart");
+    let count = 0;
     // function for selecting element
     let selectElement = (s) => document.querySelector(s);
 
@@ -20,51 +21,8 @@ window.onload = function(){
       selectElement(".input").classList.remove("active");
     });
 
-    function chart(list){
-        var ctx = document.getElementById("myChart").getContext("2d");
-        var myChart = new Chart(ctx, {
-          type: "pie",
-          data: {
-            labels: ["Income", "Expense"],
-            datasets: [
-              {
-                label: "# of Votes",
-                data: list,
-                backgroundColor: [
-                  "rgba(255, 99, 132, 0.2)",
-                  "rgba(54, 162, 235, 0.2)",
-                  "rgba(255, 206, 86, 0.2)",
-                  "rgba(75, 192, 192, 0.2)",
-                  "rgba(153, 102, 255, 0.2)",
-                  "rgba(255, 159, 64, 0.2)",
-                ],
-                borderColor: [
-                  "rgba(255, 99, 132, 1)",
-                  "rgba(54, 162, 235, 1)",
-                  "rgba(255, 206, 86, 1)",
-                  "rgba(75, 192, 192, 1)",
-                  "rgba(153, 102, 255, 1)",
-                  "rgba(255, 159, 64, 1)",
-                ],
-                borderWidth: 1,
-              },
-            ],
-          },
-          options: {
-            scales: {
-              yAxes: [
-                {
-                  ticks: {
-                    beginAtZero: true,
-                  },
-                },
-              ],
-            },
-          },
-        });
-        chart.update();
-    }
 
+       
 
 
 
@@ -99,6 +57,32 @@ window.onload = function(){
       let minute = currDate.getMinutes();
       currentDay.innerHTML = `${hour}:${minute} ${days[day]}`;
     }, 1000);
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var myChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: ["Income", "Expense"],
+          datasets: [
+            {
+              label: "# of Votes",
+              data: [0, 0],
+              backgroundColor: [
+                // "rgba(255, 99, 132, 0.2)",
+                // "rgba(54, 162, 235, 0.2)",
+                "red",
+                "blue",
+              ],
+              borderColor: ["red", "blue"],
+              borderWidth: 1,
+            },
+          ],
+        },
+      });
+      
+      // console.log(navList.childNodes.length);
+      
+      
+      
     // adding data on history
     function addExpense(inputSelect, inputText, inputNumber) {
         let currDate = new Date();
@@ -129,28 +113,39 @@ window.onload = function(){
         `;
       let position = "beforeend";
       navList.insertAdjacentHTML(position, madeList);
+      count += 1;
+      // console.log(count);
+      
+      if(count>0){
+        mainChart.style.display = "block";
+      }
     }
     //taking input and adding data on main table and calling addExpense function.
     submit.addEventListener('click',(e)=>{
         e.preventDefault();
+        
         if (text.value.trim().length > 0 && number.value.trim().length > 0) {
             let inputSelect = select.value;
             let inputText = text.value;
-            let inputNumber = number.value;
-            
+            let inputNumber = number.value;            
             if(inputSelect=='Income'){
             income.innerHTML = parseFloat(income.innerHTML) + parseFloat(inputNumber);
             balance.innerHTML = parseFloat(balance.innerHTML) + parseFloat(inputNumber);
-                list[0] += parseFloat(inputNumber);
-                chart(list);
+                // list[0] += parseFloat(inputNumber);
+                // chart(list);
+              
+               myChart.data.datasets[0].data[0] += parseFloat(inputNumber);
+               myChart.update();
 
-            }else{
+            } else{
                 expense.innerHTML =
                   parseFloat(expense.innerHTML) + parseFloat(inputNumber);
                 balance.innerHTML =
                   parseFloat(balance.innerHTML) - parseFloat(inputNumber);
-                  list[1] += parseFloat(inputNumber);
-                  chart(list);
+                  // list[1] += parseFloat(inputNumber);
+                  // chart(list);
+                  myChart.data.datasets[0].data[1] += parseFloat(inputNumber);
+                  myChart.update()
             }
 
             // list.push({
@@ -177,11 +172,22 @@ window.onload = function(){
               parseFloat(income.innerHTML) - parseFloat(delMoney);
             balance.innerHTML =
               parseFloat(balance.innerHTML) - parseFloat(delMoney);
+               myChart.data.datasets[0].data[0] -= parseFloat(delMoney);
+               myChart.update();
         }else{
             expense.innerHTML =
               parseFloat(expense.innerHTML) +  parseFloat(delMoney);
             balance.innerHTML =
               parseFloat(balance.innerHTML) - parseFloat(delMoney);
+              myChart.data.datasets[0].data[1] += parseFloat(delMoney);
+              myChart.update();
+        }
+        count -= 1;
+        // console.log(count);
+        if (count > 0) {
+          mainChart.style.display = "block";
+        }else{
+          mainChart.style.display = "none";
         }
         
            
@@ -189,7 +195,7 @@ window.onload = function(){
         
     })
 
-    
+          
 
 
 }
@@ -197,4 +203,5 @@ window.onload = function(){
 
 // // Adding Time and Background
 // time.innerHTML = `${days[day]},${months[month]} ${date}`;
+
 
