@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./font-awesome/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Money-Manager</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Expense Tracker</h1>
+            <p>6:21 Saturday</p>
+        </header>
+        <section>
+            <div class="content">
+                <div class="content-item">
+                    <h2>Income</h2>
+                    <p>0</p>
+                </div>
+                <div class="content-item">
+                    <h2>Expenses</h2>
+                    <p>0</p>
+                </div>
+                <div class="content-item">
+                    <h2>Balance</h2>
+                    <p>0</p>
+                </div>
+            </div>
+            <ul class="nav-list">
+                <li class="nav-items">
+                    <div class="head">
+                        <h4>May 16, Saturday</h4>
+                        <p>Expenses: <span>662</span></p>
+                    </div>
+                    <div class="history">
+                        <div class="history-content">
+                            <p>-622</p>
+                            <h3>Lorem</h3>
+                        </div>
+                        <div class="delete">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-items">
+                    <div class="head">
+                        <h4>May 16, Saturday</h4>
+                        <p>Expenses: <span>662</span></p>
+                    </div>
+                    <div class="history">
+                        <div class="history-content">
+                            <p>-622</p>
+                            <h3>Lorem</h3>
+                        </div>
+                        <div class="delete">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="add-expenses">
+                <button class="touch">+</button>
+            </div>
+            <div class="input">
+                <div class="back">
+                    <button><i class="fas fa-arrow-right"></i></button>
+                </div>
+                <form>
+                    <div class="input-type">
+                        <select name="" id="">
+                            <option value="Expenses">Expenses</option>
+                            <option value="Income">Income</option>
+                        </select>
+                   </div>
+                   <div class="input-content">
+                       <div class="description">
+                           <label>📝</label>
+                           <input type="text" placeholder="Memo">
+                       </div>
+                       <div class="Amount">
+                           <label>₹</label>
+                           <input type="number" placeholder="Amount">
+                       </div>
+                   </div>
+                   <div class="submit">
+                       <input type="submit" value="ADD">
+                   </div>
+                </form>
+
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
