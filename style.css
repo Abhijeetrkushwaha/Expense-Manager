@@ -113,7 +113,7 @@ section{
 }
 .add-expenses{
     position: absolute;
-    bottom: 2rem;
+    bottom: 5rem;
     right: 2rem;
 }
 .add-expenses button{
