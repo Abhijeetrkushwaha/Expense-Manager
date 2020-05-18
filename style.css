@@ -112,9 +112,10 @@ section{
     color: var(--primary-font);
 }
 .add-expenses{
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
 }
 .add-expenses button{
     background-color: var(--primary-font);
