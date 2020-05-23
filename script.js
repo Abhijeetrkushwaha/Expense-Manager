@@ -160,6 +160,7 @@ window.onload = function(){
             selectElement(".input").classList.remove("active");
         }
     })
+    // deleting data from list as well as from chart
     navList.addEventListener('click',(e)=>{
        if(e.target.classList.contains("del")){
            let li = e.target.parentElement.parentElement.parentElement;
